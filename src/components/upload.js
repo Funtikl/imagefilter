@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import axios from 'axios';
 class Upload extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,12 @@ class Upload extends Component {
   };
 
   uploadHandler = () => {
-    console.log(this.state.selectedFile);
+    const fd = new FormData();
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+  axios.post(' https://us-central1-apiforgram.cloudfunctions.net/uploadFile', fd)
+    .then((res)=>{
+      console.log(res);
+    })
   };
 
   render() {
@@ -21,10 +26,8 @@ class Upload extends Component {
         <h1 style={styles.text}>Upload image and filter it!</h1>
         <input
           style={styles.inputButton}
-          name="file"
           type="file"
-          onChange={this.fileChangedHandler}
-        />
+          onChange={this.fileChangedHandler}/>
         <button style={styles.button} onClick={this.uploadHandler}>
           Upload here!
         </button>
