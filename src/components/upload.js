@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+// import * as firebase from 'firebase';
 class Upload extends Component {
   constructor(props) {
     super(props);
@@ -12,12 +13,12 @@ class Upload extends Component {
   };
 
   uploadHandler = () => {
-    const fd = new FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-  axios.post(' https://us-central1-apiforgram.cloudfunctions.net/uploadFile', fd)
-    .then((res)=>{
-      console.log(res);
-    })
+    if(this.state.selectedFile === null){
+      console.log('null')
+    }
+   axios.post('http://localhost:2000/upload', this.state.selectedFile[0]).then((res)=>{
+    console.log(res);
+   })
   };
 
   render() {
