@@ -9,23 +9,29 @@ class Upload extends Component {
     };
   }
   fileChangedHandler = event => {
+    event.preventDefault();
     this.setState({ selectedFile: event.target.files[0] });
   };
 
-  uploadHandler = () => {
-    if(this.state.selectedFile === null){
-      console.log('null')
-    }
-   axios.post('http://localhost:2000/upload', this.state.selectedFile[0]).then((res)=>{
-    console.log(res);
+ 
+  uploadHandler = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("image", this.state.selectedFile,'image.jpg')
+   axios.post('http://localhost:2000/upload', formData).then((res)=>{
+    console.log('done');
+   }).catch((err)=>{
+     console.log(err)
    })
   };
+ 
 
   render() {
     return (
       <div className="Upload" style={styles.Upload}>
         <h1 style={styles.text}>Upload image and filter it!</h1>
         <input
+        name="image"
           style={styles.inputButton}
           type="file"
           onChange={this.fileChangedHandler}/>
