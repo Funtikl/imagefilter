@@ -5,7 +5,7 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFile: null
+      selectedFile: 'https://amp.businessinsider.com/images/578e9e4588e4a77c708b8db1-1334-1000.jpg'
     };
   }
   fileChangedHandler = event => {
@@ -13,7 +13,7 @@ class Upload extends Component {
     this.setState({ selectedFile: event.target.files[0] });
   };
 
- 
+
   uploadHandler = (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -25,12 +25,12 @@ class Upload extends Component {
    })
   };
  
-
   render() {
     return (
       <div className="Upload" style={styles.Upload}>
         <h1 style={styles.text}>Upload image and filter it!</h1>
         <input
+        ref={this.input}
         name="image"
           style={styles.inputButton}
           type="file"

@@ -4,11 +4,12 @@ import Upload from './components/upload';
 import Filter from './components/filter';
 
 class App extends Component {
+  
   render() {
     return (
       <div className="App">
-        <Upload />
-        <Filter />
+        <Upload  />
+        <Filter image="/Users/fuad/code/webstagram/backend/uploads/image.jpeg" />
       </div>
     );
   }
