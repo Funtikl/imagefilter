@@ -4,7 +4,7 @@ import Upload from './components/upload';
 import Filter from './components/filter';
 
 class App extends Component {
-  
+
   render() {
     return (
       <div className="App">

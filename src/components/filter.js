@@ -3,9 +3,10 @@ import React, { Component } from "react";
 class Filter extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.image)
+    console.log(this.props.image);
     this.state = {
-      image: 'https://timedotcom.files.wordpress.com/2015/09/gettyimages-463770400.jpg',
+      image:
+        "https://timedotcom.files.wordpress.com/2015/09/gettyimages-463770400.jpg",
       bw: 0,
       sepia: 0,
       contrast: 100,
@@ -22,10 +23,10 @@ class Filter extends Component {
     };
   }
   uploadMe = e => {
-      this.setState({
-          image:this.props.image
-      })
-  }
+    this.setState({
+      image: this.props.image
+    });
+  };
   bwfilterHandler = e => {
     this.setState({
       bw: e.target.value
@@ -49,57 +50,65 @@ class Filter extends Component {
     });
   };
   makeMeSaturation = e => {
-        this.setState({
-            bw: 0,
+    this.setState({
+      bw: 0,
       contrast: 85,
       brightness: 85,
-      saturate:150
-        })
-}
-makeMeShine = e => {
+      saturate: 150
+    });
+  };
+  makeMeShine = e => {
     this.setState({
-        bw: 0,
-        contrast: 100,
-        brightness: 135,
-        saturate:100,
-    })
-}
-makeMeDarker = e  => {
+      bw: 0,
+      contrast: 100,
+      brightness: 135,
+      saturate: 100
+    });
+  };
+  makeMeDarker = e => {
     this.setState({
-        bw: 0,
-        contrast: 160,
-        brightness: 77,
-        saturate:100,
-    })
-}
-makeMeContrasterBW = e => {
+      bw: 0,
+      contrast: 160,
+      brightness: 77,
+      saturate: 100
+    });
+  };
+  makeMeContrasterBW = e => {
     this.setState({
-        bw: 100,
-        contrast: 130,
-        brightness: 120,
-        saturate:0,
-    })
-}
+      bw: 100,
+      contrast: 130,
+      brightness: 120,
+      saturate: 0
+    });
+  };
   render() {
     return (
       <div
         style={{
           display: `${this.state.display}`,
           flexDirection: `${this.state.flexDirection}`,
-          marginTop: -490
+          marginTop: -590,
+          flexWrap: "wrap",
+          
         }}
       >
         <img
-            src={require('../uploads/image.jpeg')} 
+          src={require("../uploads/image.jpeg")}
           alt="filtered"
           style={{
-            filter: `grayscale(${this.state.bw}%) contrast(${this.state.contrast}%) brightness(${this.state.brightness}%) saturate(${this.state.saturate}%)` ,
+            filter: `grayscale(${this.state.bw}%) contrast(${
+              this.state.contrast
+            }%) brightness(${this.state.brightness}%) saturate(${
+              this.state.saturate
+            }%)`,
             margin: 20,
             width: 500,
             height: 400,
             resizeMode: "contain",
             display: "flex",
-            flexBasis: "50%"
+            flexBasis: "50%",
+            borderRadius:20,
+            
           }}
         />
         <p style={{ position: "absolute", marginTop: 430, marginLeft: 70 }}>
@@ -132,70 +141,92 @@ makeMeContrasterBW = e => {
           style={{ position: "absolute", marginTop: 530, marginLeft: 70 }}
           onChange={this.brightHandler}
         />
-        <button
+        <div
+          className="buttons"
           style={{
-            backgroundImage:`url(${this.state.image})`,
-            backgroundSize:'cover',
             display: "flex",
-            flex: 2,
-            backgroundColor: "#222",
-            color: "white"
+            width: "500px",
+            height: 500,
+            marginLeft: 700,
+            flexDirection: "row",
+            flexWrap: "wrap",
+            position: "absolute",
           }}
-          onClick={this.makeMeBW}
         >
-          <h2>BWorld</h2>
-        </button>
-        <button
-          style={{
-            backgroundImage:`url(${this.state.image})`,
-            backgroundSize:'cover',
-            display: "flex",
-            flex: 2,
-            backgroundColor: "black",
-            color: "white"
-          }}
-          onClick={this.makeMeSaturation}
-        >
-          <h2>SaturateMe</h2>
-        </button>
-        <button
-          style={{
-            backgroundImage:`url(${this.state.image})`,
-            backgroundSize:'cover',
-            display: "flex",
-            flex: 2,
-            backgroundColor: "black",
-            color: "white"
-          }}
-          onClick={this.makeMeShine}
-        >
-          <h2>Shine</h2>
-        </button>
-        <button
-          style={{
-            backgroundImage:`url(${this.state.image})`,
-            backgroundSize:'cover',
-            display: "flex",
-            flex: 2,
-            backgroundColor: "black",
-            color: "white"
-          }}
-          onClick={this.makeMeDarker}
-        >
-          <h2>DarkMode</h2>
-        </button>
-        <button
-          style={{
-            backgroundImage:`url(${this.state.image})`,
-            backgroundSize:'cover',
-            display: "flex",
-            flex: 2,
-            color: "white"
-          }}
-          onClick={this.makeMeContrasterBW}
-        >
-          <h2>ContrastBW</h2>
-        </button>
+          <button
+            style={{
+              backgroundImage: `url(${this.state.image})`,
+              backgroundSize: "cover",
+
+              width: 250,
+              borderRadius:`20px 0px 0px 20px`,
+              backgroundColor: "#222",
+              color: "white"
+            }}
+            onClick={this.makeMeBW}
+          >
+            <h2>BWorld</h2>
+          </button>
+          <button
+            style={{
+              backgroundImage: `url(${this.state.image})`,
+              backgroundSize: "cover",
+              borderRadius:`0px 20px 20px 0px`,
+              width: 250,
+
+              backgroundColor: "black",
+              color: "white"
+            }}
+            onClick={this.makeMeSaturation}
+          >
+            <h2>SaturateMe</h2>
+          </button>
+          <button
+            style={{
+              backgroundImage: `url(${this.state.image})`,
+              backgroundSize: "cover",
+
+              width: 250,
+              borderRadius:`20px 0px 0px 20px`,
+              backgroundColor: "black",
+              color: "white"
+            }}
+            onClick={this.makeMeShine}
+          >
+            <h2>Shine</h2>
+          </button>
+          <button
+            style={{
+              backgroundImage: `url(${this.state.image})`,
+              backgroundSize: "cover",
+              borderRadius:`0px 20px 20px 0px`,
+              width: 250,
+
+              backgroundColor: "black",
+              color: "white"
+            }}
+            onClick={this.makeMeDarker}
+          >
+            <h2>DarkMode</h2>
+          </button>
+          <button
+            style={{
+              backgroundImage: `url(${this.state.image})`,
+              backgroundSize: "cover",
+              flexWrap: "wrap",
+
+              width: 250,
+              borderRadius:`20px 0px 0px 20px`,
+              color: "white",
+              ':hover':{
+                display:'none'
+              }           
+            }}
+            onClick={this.makeMeContrasterBW}
+          >
+            <h2>ContrastBW</h2>
+          </button>
+        </div>
       </div>
     );
   }

@@ -24,7 +24,7 @@ class Upload extends Component {
      console.log(err)
    })
   };
- 
+
   render() {
     return (
       <div className="Upload" style={styles.Upload}>
@@ -56,7 +56,7 @@ const styles = {
     padding: "10px"
   },
   button: {
-    marginLeft: "20px"
+    marginLeft: "20px",
   }
 };
 
